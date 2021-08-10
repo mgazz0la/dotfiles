@@ -2,27 +2,29 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 #cd ~
+clear
 neofetch
 fortune | lolcat
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/mgazzola/.oh-my-zsh"
-export DISPLAY=172.21.0.1:0.0
+#export DISPLAY=172.21.0.1:0.0
 export PREFIX="$HOME/opt/cross"
 export TARGET=i686-elf
 export PATH="$PREFIX/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(go env GOPATH)/bin
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export PATH=$PATH:/home/mgazzola/.cargo/bin
+#export PATH=$PATH:$(go env GOPATH)/bin
+#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 export GPG_TTY=$(tty)
 
-source ~/vit/arc-api/.env
+#source ~/vit/arc-api/.env
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="strug"
+ZSH_THEME="daveverwer"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

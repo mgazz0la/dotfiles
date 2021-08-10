@@ -15,7 +15,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'         " Better support for comments.
 Plug 'airblade/vim-gitgutter'           " Git diffs on the left sidebar.
@@ -36,11 +36,15 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "Plug 'ryanoasis/vim-devicons'
 Plug 'liuchengxu/vista.vim'
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-obsession'
 Plug 'chriskempson/base16-vim'
 Plug 'rhysd/vim-clang-format'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+"Plug 'severin-lemaignan/vim-minimap'
+"Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+Plug 'reedes/vim-pencil'
 call plug#end()
 
 " general config
@@ -49,8 +53,11 @@ filetype plugin indent on                 " plugin = use per-filetype plugins
                                           " indent = use per-filetype indents
                                           " on     = use filetype detection
 let mapleader=','
-colorscheme base16-tomorrow-night-eighties
 syntax on
+colorscheme monokai-phoenix
+highlight Comment cterm=italic
+set t_ZH=[3m
+set t_ZR=[23m
 set backspace=indent,eol,start            " indent = allow backspace over auto-
                                           "          indent.
                                           " eol    = allow backspace over line
@@ -101,6 +108,7 @@ autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 
 " Add a color column at 100 characters.
 autocmd FileType * set colorcolumn=100
+autocmd FileType cpp set colorcolumn=80
 
 " Set cursorline and cursorcolumn colors.
 highlight CursorLine ctermbg=17 guibg=#693939
@@ -109,6 +117,7 @@ highlight CursorColumn ctermbg=17 guibg=#592929
 " If you go over the line-length, highlight the code in red.
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 autocmd FileType * match OverLength /\%101v.\+/
+autocmd FileType cpp match OverLength /\%81v.\+/
 
 " Strip trailing whitespace (<leader>ss)
 function! StripWhitespace()
@@ -334,17 +343,9 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
-nmap <Leader>v :Vista!!<CR>
-let g:vista_default_executive = 'coc'
 inoremap <C-c> <ESC>
 
 set wildignore+=*/.git/*,*/node_modules/*
-
-let g:ale_fixers = {
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'eslint']
-      \ }
-let g:ale_fix_on_save = 1
 
 "" The Silver Searcher
 if executable('ag')
@@ -371,3 +372,4 @@ let g:lightline = {
 
 autocmd FileType c ClangFormatAutoEnable
 
+let g:lsp_cxx_hl_use_text_props = 1
