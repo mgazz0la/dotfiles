@@ -33,8 +33,8 @@ Plug 'benmills/vimux'                   " Better support for tmux.
 Plug 'bling/vim-bufferline'             " Buffer list in command line.
 Plug 'Yggdroot/indentLine'              " Show indent lines.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-"Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
 Plug 'liuchengxu/vista.vim'
 "Plug 'w0rp/ale'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
