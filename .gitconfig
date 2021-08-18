@@ -8,7 +8,5 @@
 	editor = vim
 [pull]
 	rebase = false
-[cinnabar]
-	helper = /tmp/tmpo0p7v6t_/git-cinnabar-master/git-cinnabar-helper
 [commit]
 	gpgsign = true
