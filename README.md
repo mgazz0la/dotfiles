@@ -8,6 +8,7 @@ directory to track your dotfiles directly in version control.
 
 TODO: Add detailed instructions on how to properly clone this repo.
 
-## there's no place like $HOME
+## there's no place like `$HOME`
 
 - [`neovim`](.config/nvim)
+- [`zsh`](.config/zsh)

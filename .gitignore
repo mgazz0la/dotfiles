@@ -1,1 +1,6 @@
 *.local
+.zsh_history
+.zcompdump*
+*.bak
+*.bck
+lazy-lock.json
