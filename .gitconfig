@@ -1,0 +1,20 @@
+[core]
+	editor = nvim
+
+[credential]
+	helper = cache --timeout 31536000
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
+	ff = only
+
+[user]
+	useConfigOnly = true
+
+# Must remain at end
+# Identity and gpg signing stuff should go in there
+[include]
+	path = ~/.gitconfig.local
