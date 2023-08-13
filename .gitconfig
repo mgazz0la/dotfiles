@@ -1,11 +1,47 @@
+[alias]
+  lg = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%C(reset)'
+  lga = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%C(reset)' --all
+  lgf = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%n%b%C(reset)'
+  lgfa = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%n%b%C(reset)' --all
+  s = status -sb
+  a = add
+  ai = add -i
+  co = checkout
+  c = commit
+  ca = commit --amend
+  can = commit --amend --no-edit
+  hide = update-index --assume-unchanged
+  ra = rebase --abort
+  rc = rebase --continue
+  ri = rebase -i
+  unhide = update-index --no-assume-unchanged
+  who = shortlog -sn --no-merges
+  whoami = !git config --get user.name && git config --get user.email
+
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
 [core]
 	editor = nvim
 
 [credential]
 	helper = cache --timeout 31536000
 
+[diff]
+  renames = copies
+
+[diff "json"]
+  textconv = jq '.'
+
 [init]
 	defaultBranch = main
+
+[log]
+  abbrevcommit = true
+  decorate = no
 
 [pull]
 	rebase = false
