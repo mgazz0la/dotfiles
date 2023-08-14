@@ -11,4 +11,5 @@ TODO: Add detailed instructions on how to properly clone this repo.
 ## there's no place like `$HOME`
 
 - [`neovim`](.config/nvim)
+- [`tmux`](.config/tmux)
 - [`zsh`](.config/zsh)
