@@ -11,30 +11,30 @@ export XDG_DATA_HOME=$HOME/.local/share
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
 export HISTFILE=$ZSH_CACHE_DIR/.zhistory
+export HISTSIZE=5000
+export SAVEHIST=500000
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
 
-if command -v nvim &> /dev/null; then
-  EDITOR=nvim
-elif command -v vim &> /dev/null; then
-  EDITOR=vim
-elif command -v vi &> /dev/null; then
-  EDITOR=vi
-else
-  EDITOR=nano
-fi
-export EDITOR
+
+
+editors=(nvim vim vi nano)
+for ed in $editors; do
+  [[ $(command -v $ed) ]] && export EDITOR=$ed && break
+done
 export VISUAL=$EDITOR
 
-if command -v nvim &> /dev/null; then
-  MANPAGER='nvim +Man!'
-else
-  MANPAGER='less -FirSwX'
-fi
-export MANPAGER
+[[ $(command -v nvim) ]]            \
+  && export MANPAGER='nvim +Man!'   \
+  || export MANPAGER='less -FirSwX'
+
 export PAGER='less -FirSwX'
 
 export GPG_TTY=$(tty)
 
-export PATH=$PATH:$HOME/bin
+[[ $(command -v go) ]] && \
+  export PATH=$PATH:$(go env GOPATH)/bin
 
 # if exists, source .zshenv.local
 [[ -f $ZDOTDIR/.zshenv.local ]] && source $ZDOTDIR/.zshenv.local
