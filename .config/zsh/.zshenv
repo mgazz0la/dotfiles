@@ -17,8 +17,6 @@ setopt appendhistory
 setopt sharehistory
 setopt incappendhistory
 
-
-
 editors=(nvim vim vi nano)
 for ed in $editors; do
   [[ $(command -v $ed) ]] && export EDITOR=$ed && break
