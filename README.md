@@ -13,3 +13,4 @@ TODO: Add detailed instructions on how to properly clone this repo.
 - [`neovim`](.config/nvim)
 - [`tmux`](.config/tmux)
 - [`zsh`](.config/zsh)
+- [`kitty`](.config/kitty)
