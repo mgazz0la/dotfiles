@@ -1,15 +1,19 @@
 [alias]
+  l = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%C(reset)'
   lg = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%C(reset)'
   lga = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%C(reset)' --all
   lgf = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%n%b%C(reset)'
   lgfa = log --graph --abbrev-commit --decorate --pretty=format:'%C(bold blue)%h%C(reset) %C(bold green)(%cr)%C(reset) %C(cyan)%cn%C(reset)%C(bold red)%d%C(reset)%n%C(normal)%s%n%n%b%C(reset)' --all
   s = status -sb
   a = add
+  aa = add -A
   ai = add -i
   co = checkout
+  cob = checkout -b
   c = commit
   ca = commit --amend
   can = commit --amend --no-edit
+  d = diff
   hide = update-index --assume-unchanged
   ra = rebase --abort
   rc = rebase --continue
@@ -26,11 +30,13 @@
 
 [core]
 	editor = nvim
+  pager = delta
 
 [credential]
 	helper = cache --timeout 31536000
 
 [diff]
+  colorMoved = default
   renames = copies
 
 [diff "json"]
@@ -38,6 +44,9 @@
 
 [init]
 	defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
 
 [log]
   abbrevcommit = true
@@ -49,8 +58,33 @@
 
 [user]
 	useConfigOnly = true
+	email = michaelagazzola@gmail.com
+	name = Michael Gazzola
+
+[delta]
+  dark = true
+  features = decorations
+  line-numbers = true
+  navigate = true    # use n and N to move between diff sections
+  syntax-theme = Dracula
+
+[delta "interactive"]
+  keep-plus-minus-markers = false
+
+[delta "decorations"]
+  commit-decoration-style = blue ol
+  commit-style = raw
+  file-style = omit
+  hunk-header-decoration-style = blue box
+  hunk-header-file-style = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style = file line-number syntax
+
+[merge]
+  conflictstyle = diff3
 
 # Must remain at end
 # Identity and gpg signing stuff should go in there
 [include]
 	path = ~/.gitconfig.local
+
