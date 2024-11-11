@@ -1,4 +1,5 @@
 return {
+  { "nathangrigg/vim-beancount" },
   {
     "hrsh7th/nvim-cmp",
     ---@param opts cmp.ConfigSchema
